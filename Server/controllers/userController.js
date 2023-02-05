@@ -16,6 +16,8 @@ exports.register = async (req, res) => {
     try {
         const { firstName, lastName, email, password } = req.body
 
+        console.log("ENTER REGISTER")
+
         const user = await User.create({
             firstName,
             lastName,
