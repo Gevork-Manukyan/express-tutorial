@@ -1,6 +1,8 @@
 const express = require("express")
 const app = express()
 const User = require("./routes/user.route")
+const mongoose = require("mongoose")
+
 
 
 // Middleware
