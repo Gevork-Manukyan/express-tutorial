@@ -7,12 +7,12 @@ const userController = require("../controllers/userController")
 
 // Login Endpoint
 router.get("/login", async (req, res) => {
-    
+    userController.login(req, res)
 })
 
 // Register Endpoint
 router.post("/register", async (req, res) => {
-    
+    userController.register(req, res)
 })
 
 module.exports = router
