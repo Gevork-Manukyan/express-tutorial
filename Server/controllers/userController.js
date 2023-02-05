@@ -23,7 +23,8 @@ exports.register = async (req, res) => {
             password,
           });
 
-        res.status(201).json({ success: true, data: user });
+        console.log(user)
+        return user
     } catch (error) {
         res.status(400).json({ success: false, error: error.message });
     }
