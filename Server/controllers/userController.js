@@ -4,12 +4,11 @@ exports.login = async (req, res) => {
     const { email, password } = req.body
 
     const user = await User.findOne({ email });
-    if (!user) return res.status(401).send({ error: "Email or password is invalid." });
+    if (user?.email === null) return false;
+        
+    if (password !== user?.password) return false;
 
-    const isPasswordMatch = await user.comparePassword(password);
-    if (!isPasswordMatch) return res.status(401).send({ error: "Email or password is invalid." });
-
-    res.status(200)
+    return user 
 }
 
 exports.register = async (req, res) => {
