@@ -1,10 +1,12 @@
 require("dotenv").config()
 const express = require("express")
 const app = express()
+const cors = require("cors")
 const User = require("./routes/user.route")
 const { mongoose, db } = require("./database")
 
 // Middleware
+app.use(cors())
 app.use(express.json())
 
 // Routes
