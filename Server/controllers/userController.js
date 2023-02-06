@@ -16,18 +16,25 @@ exports.register = async (req, res) => {
     try {
         const { firstName, lastName, email, password } = req.body
 
-        console.log("ENTER REGISTER")
-
-        const user = await User.create({
+        const user = new User({
             firstName,
             lastName,
             email,
-            password,
-          });
+            password
+        })
 
-        console.log(user)
-        return user
+        try {
+            return await user.save()
+        } catch (error) {
+            res.status(500).json({ success: false, error: error.message });
+        }
+
     } catch (error) {
         res.status(400).json({ success: false, error: error.message });
     }
+}
+
+exports.getUsers = async (req, res) => {
+    const users = await User.find({})
+    return users
 }

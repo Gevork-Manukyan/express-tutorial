@@ -8,13 +8,17 @@ const userController = require("../controllers/userController")
 // Login Endpoint
 router.get("/login", async (req, res) => {
     const response = await userController.login(req, res)
-    console.log(response)
 })
 
 // Register Endpoint
 router.post("/register", async (req, res) => {
     const response = await userController.register(req, res)
-    console.log(response)
+    res.status(200).send(response)
+})
+
+router.get("/getUsers", async (req, res) => {
+    const users = await userController.getUsers(req, res)
+    res.status(200).send(users)
 })
 
 module.exports = router
