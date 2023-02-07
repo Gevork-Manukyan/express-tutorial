@@ -4,7 +4,7 @@ exports.login = async (req, res) => {
     const { email, password } = req.body
 
     const user = await User.findOne({ email });
-    if (user?.email === null) return false;
+    if (email !== user?.email) return false;
         
     if (password !== user?.password) return false;
 
